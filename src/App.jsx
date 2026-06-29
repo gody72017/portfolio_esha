@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import {
   ArrowDown,
+  ArrowLeft,
   ArrowRight,
   BarChart3,
   BriefcaseBusiness,
@@ -23,6 +24,7 @@ import {
 
 const email = 'eshajaiswal675@gmail.com';
 const linkedInUrl = 'http://www.linkedin.com/in/esha-jaiswal-037626245';
+const financeRepoUrl = 'https://github.com/gody72017/finance-analytics-portfolio';
 
 const navItems = [
   ['projects', 'Projects'],
@@ -41,34 +43,84 @@ const highlights = [
 
 const projects = [
   {
-    title: 'Cost-Emissions Optimisation',
-    type: 'Excel Solver + SIMUL8',
+    slug: 'financial-dashboard',
+    title: 'Financial Dashboard',
+    type: 'Management reporting + KPI review',
     summary:
-      'Modelled a resource-allocation scenario, generated a Pareto frontier, and translated cost-emissions trade-offs into management-ready comparisons.',
+      'Built a management-style dashboard for revenue, expenses, gross profit, net profit, profit margin, product revenue, and department costs.',
     contribution:
-      'Structured scenarios, compared constraints, and turned simulation outputs into visuals that support practical decision-making.',
-    tags: ['Optimisation', 'Simulation', 'Scenario planning', 'Decision support'],
-    metrics: ['Pareto frontier', 'Trade-off analysis', 'Management visuals'],
+      'Structured finance KPIs into a clear reporting view so management can review profitability, expense patterns, and product revenue movement quickly.',
+    tags: ['Management reporting', 'KPI tracking', 'Profitability analysis', 'Dashboarding'],
+    metrics: ['Revenue trend', 'Profit margin', 'Cost review'],
+    businessQuestions: ['How are revenue, gross profit, and net profit trending?', 'Which products generate the most revenue?', 'Which departments drive operating costs?', 'Is the company maintaining healthy profit margins?'],
+    outputs: ['KPI cards for revenue, expenses, gross profit, net profit, and profit margin', 'Monthly trend chart', 'Product-wise revenue chart', 'Department-wise cost chart', 'Management summary'],
+    signal: 'Shows that Esha can turn finance data into executive-style reporting and decision support.',
+    tools: ['Management reporting', 'KPI tracking', 'Pandas', 'Plotly', 'Excel-ready datasets'],
+    image: '/images/finance/financial-dashboard.png',
   },
   {
-    title: 'Customer Churn Management',
-    type: 'Python + Excel',
+    slug: 'budget-vs-actual',
+    title: 'Budget vs Actual Analysis',
+    type: 'Variance analysis + commentary',
     summary:
-      'Identified churn drivers, built churn-risk scoring, and converted insight into prioritised retention actions and operating playbooks.',
+      'Reviewed quarterly budget-versus-actual performance to identify profit variance, department-level impact, adverse drivers, and management commentary.',
     contribution:
-      'Connected data patterns to business action by pairing customer-risk scoring with clear next steps for retention and service improvement.',
-    tags: ['Churn drivers', 'Risk scoring', 'Retention', 'Playbooks'],
-    metrics: ['Driver analysis', 'Risk segments', 'Action plan'],
+      'Converted financial variance into useful business language: what changed, where attention is needed, and what management should review next.',
+    tags: ['Variance analysis', 'Budget review', 'Favourable/adverse', 'Management commentary'],
+    metrics: ['Variance %', 'Profit impact', 'Adverse drivers'],
+    businessQuestions: ['Did actual profit finish above or below budget?', 'Which departments created the largest favourable or adverse variances?', 'Which cost categories require management attention?', 'What reason codes explain the biggest budget misses?'],
+    outputs: ['Budgeted revenue versus actual revenue', 'Budgeted expense versus actual expense', 'Variance amount and variance percentage', 'Favourable/adverse status', 'Automated management commentary'],
+    signal: 'Demonstrates financial performance review, variance explanation, and concise reporting for management.',
+    tools: ['Budget review', 'Variance analysis', 'Management commentary', 'Pandas', 'Dashboard reporting'],
+    image: '/images/finance/budget-vs-actual.png',
   },
   {
-    title: 'Movie Recommender System',
-    type: 'Predictive modelling',
+    slug: 'sql-financial-analysis',
+    title: 'SQL Financial Analysis',
+    type: 'SQL + business insight',
     summary:
-      'Evaluated predictive approaches and model performance while documenting data risks, bias controls, and responsible-use considerations.',
+      'Used SQL to analyze transaction, customer, product, region, invoice, and payment data to surface performance and payment-delay insights.',
     contribution:
-      'Balanced model evaluation with responsible analytics: performance, data quality, bias, and clear documentation for non-technical readers.',
-    tags: ['Prediction', 'Model evaluation', 'Bias controls', 'Documentation'],
-    metrics: ['Model comparison', 'Risk notes', 'Responsible use'],
+      'Connected relational data analysis to business questions around revenue, margin, customer value, repeat purchase behaviour, and payment risk.',
+    tags: ['SQL basics', 'Revenue analysis', 'Customer segmentation', 'Payment delay review'],
+    metrics: ['Margin trend', 'Top customers', 'Late payments'],
+    businessQuestions: ['Which products generate the most revenue and gross profit?', 'Which customer segments are most valuable?', 'What is the monthly revenue and margin trend?', 'Where are payment delays concentrated?'],
+    outputs: ['Monthly revenue, gross profit, and margin trend', 'Top products and customers', 'Segment performance', 'Late payment analysis', 'Regional performance'],
+    signal: 'Shows comfort working with relational business data and translating queries into plain-English insights.',
+    tools: ['SQL basics', 'Business analysis', 'Customer segmentation', 'Margin analysis', 'CSV reporting'],
+    image: '/images/finance/sql-financial-analysis.png',
+  },
+  {
+    slug: 'portfolio-performance',
+    title: 'Portfolio Performance Analysis',
+    type: 'Return review + benchmark comparison',
+    summary:
+      'Reviewed portfolio return, risk, benchmark comparison, volatility, Sharpe ratio, drawdown, and allocation balance.',
+    contribution:
+      'Presented investment analytics in a business-friendly way, showing that performance should be reviewed across return, risk, benchmark, and concentration together.',
+    tags: ['Portfolio analytics', 'Benchmarking', 'Risk review', 'Diversification'],
+    metrics: ['Return comparison', 'Sharpe ratio', 'Drawdown'],
+    businessQuestions: ['How did the portfolio perform against the benchmark?', 'What risk measures should be reviewed together?', 'Where is allocation concentration visible?', 'How can performance be explained without relying on one metric?'],
+    outputs: ['Return and benchmark comparison', 'Volatility and Sharpe ratio', 'Drawdown review', 'Allocation visuals', 'Portfolio summary'],
+    signal: 'Adds finance analytics range while keeping the explanation business-friendly and decision-oriented.',
+    tools: ['Portfolio analytics', 'Benchmarking', 'Risk review', 'Pandas', 'Plotly'],
+    image: '/images/finance/portfolio-performance.png',
+  },
+  {
+    slug: 'stock-valuation-dcf',
+    title: 'Stock Valuation DCF',
+    type: 'Forecasting + valuation assumptions',
+    summary:
+      'Created a simplified DCF valuation workflow covering free cash flow forecasting, WACC, terminal value, valuation range, and sensitivity.',
+    contribution:
+      'Structured valuation assumptions into a clear model narrative, making the sensitivity of fair value to WACC and terminal growth easier to review.',
+    tags: ['DCF valuation', 'Forecasting', 'Sensitivity analysis', 'Financial modelling'],
+    metrics: ['FCF forecast', 'Terminal value', 'Sensitivity range'],
+    businessQuestions: ['Which assumptions drive the valuation most?', 'How do WACC and terminal growth affect fair value?', 'What does the valuation range suggest?', 'What limitations should be clearly communicated?'],
+    outputs: ['Free cash flow forecast', 'Terminal value calculation', 'Fair value estimate', 'Sensitivity table', 'Valuation summary'],
+    signal: 'Shows structured financial modelling thinking and the ability to communicate assumptions clearly.',
+    tools: ['DCF valuation', 'Forecasting', 'Sensitivity analysis', 'Financial modelling', 'Python basics'],
+    image: '/images/finance/stock-valuation-dcf.png',
   },
 ];
 
@@ -148,7 +200,7 @@ const education = [
 
 const languages = ['English - Proficient', 'Hindi - Proficient'];
 
-function Header({ activeSection }) {
+function Header({ activeSection, isDetailPage = false }) {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -159,7 +211,7 @@ function Header({ activeSection }) {
 
   return (
     <header className="site-header">
-      <a className="monogram" href="#top" aria-label="Esha Jaiswal, back to top">
+      <a className="monogram" href={isDetailPage ? '/' : '#top'} aria-label="Esha Jaiswal, back to top">
         EJ
       </a>
       <button
@@ -176,7 +228,7 @@ function Header({ activeSection }) {
           <a
             key={id}
             className={activeSection === id ? 'is-active' : ''}
-            href={`#${id}`}
+            href={isDetailPage ? `/#${id}` : `#${id}`}
             onClick={() => setIsOpen(false)}
           >
             {label}
@@ -192,31 +244,151 @@ function Header({ activeSection }) {
 
 function AnalyticsPreview({ project }) {
   return (
-    <div className="analytics-preview" aria-label={`${project.title} analytics preview`}>
+    <figure className="analytics-preview screenshot-preview" aria-label={`${project.title} dashboard preview`}>
       <div className="preview-header">
         <span>{project.type}</span>
         <LineChart size={22} aria-hidden="true" />
       </div>
-      <div className="preview-bars" aria-hidden="true">
-        <span style={{ '--height': '68%' }} />
-        <span style={{ '--height': '46%' }} />
-        <span style={{ '--height': '82%' }} />
-        <span style={{ '--height': '58%' }} />
-        <span style={{ '--height': '74%' }} />
-      </div>
-      <div className="preview-metrics">
-        {project.metrics.map((metric) => (
-          <div key={metric}>
-            <strong>{metric}</strong>
-            <small>Documented outcome</small>
+      <img src={project.image} alt={`${project.title} dashboard screenshot`} width="1200" height="675" loading="lazy" />
+      <figcaption>{project.signal}</figcaption>
+    </figure>
+  );
+}
+
+function ProjectPage({ project }) {
+  const otherProjects = projects.filter((item) => item.slug !== project.slug);
+
+  useEffect(() => {
+    document.title = `${project.title} | Esha Jaiswal`;
+    window.scrollTo(0, 0);
+  }, [project.title]);
+
+  return (
+    <>
+      <a className="skip-link" href="#main">
+        Skip to content
+      </a>
+      <Header isDetailPage />
+      <main id="main" className="project-page">
+        <section className="project-hero" aria-labelledby="project-title">
+          <div>
+            <a className="back-link" href="/#projects">
+              <ArrowLeft size={18} aria-hidden="true" /> Back to projects
+            </a>
+            <p className="eyebrow">Finance analytics case study</p>
+            <h1 id="project-title">{project.title}</h1>
+            <p className="project-lead">{project.summary}</p>
+            <div className="hero-actions">
+              <a className="button button-primary" href={financeRepoUrl} target="_blank" rel="noreferrer">
+                View source repo <ExternalLink size={18} aria-hidden="true" />
+              </a>
+              <a className="button button-ghost dark-button" href={`mailto:${email}`}>
+                Contact Esha <Mail size={18} aria-hidden="true" />
+              </a>
+            </div>
           </div>
-        ))}
-      </div>
-    </div>
+          <figure className="project-evidence">
+            <img src={project.image} alt={`${project.title} dashboard screenshot`} width="1200" height="675" />
+            <figcaption>{project.type}</figcaption>
+          </figure>
+        </section>
+
+        <section className="project-summary-strip" aria-label="Recruiter signal">
+          <article>
+            <BriefcaseBusiness size={26} aria-hidden="true" />
+            <strong>Recruiter signal</strong>
+            <p>{project.signal}</p>
+          </article>
+          <article>
+            <ClipboardCheck size={26} aria-hidden="true" />
+            <strong>Business focus</strong>
+            <p>{project.type}</p>
+          </article>
+          <article>
+            <Database size={26} aria-hidden="true" />
+            <strong>Technical support</strong>
+            <p>Python, SQL, and dashboards are positioned as support for analysis, reporting, validation, and decision-making.</p>
+          </article>
+        </section>
+
+        <section className="project-body section-band">
+          <div className="project-column">
+            <p className="eyebrow">Business questions</p>
+            <h2>What this page answers.</h2>
+            <ul className="check-list">
+              {project.businessQuestions.map((item) => (
+                <li key={item}>
+                  <Check size={16} aria-hidden="true" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="project-column">
+            <p className="eyebrow">Outputs</p>
+            <h2>What was produced.</h2>
+            <ul className="check-list">
+              {project.outputs.map((item) => (
+                <li key={item}>
+                  <Check size={16} aria-hidden="true" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        <section className="project-tools section-band" aria-labelledby="tools-title">
+          <div>
+            <p className="eyebrow">Skills shown</p>
+            <h2 id="tools-title">Business-first, technical where useful.</h2>
+          </div>
+          <div className="tool-chip-grid">
+            {project.tools.map((item) => (
+              <span key={item}>{item}</span>
+            ))}
+          </div>
+        </section>
+
+        <section className="more-projects section-band" aria-labelledby="more-projects-title">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow">More analytics pages</p>
+              <h2 id="more-projects-title">Continue the analytics portfolio.</h2>
+            </div>
+            <p>Each page is static, fast, and written for business analyst, reporting analyst, finance analyst, and analytics screening.</p>
+          </div>
+          <div className="compact-project-grid">
+            {otherProjects.map((item) => (
+              <a href={`/projects/${item.slug}`} key={item.slug}>
+                <img src={item.image} alt="" loading="lazy" width="640" height="360" />
+                <span>{item.type}</span>
+                <strong>{item.title}</strong>
+              </a>
+            ))}
+          </div>
+        </section>
+      </main>
+      <footer>
+        <span>&copy; {new Date().getFullYear()} Esha Jaiswal</span>
+        <span>Business analysis - finance analytics - reporting</span>
+        <a href="/#top">
+          Back home <ArrowRight size={15} aria-hidden="true" />
+        </a>
+      </footer>
+    </>
   );
 }
 
 export default function App() {
+  const path = window.location.pathname.replace(/\/$/, '');
+  const detailProject = projects.find((project) => `/projects/${project.slug}` === path);
+
+  if (detailProject) return <ProjectPage project={detailProject} />;
+  return <PortfolioHome />;
+}
+
+function PortfolioHome() {
   const [activeSection, setActiveSection] = useState('projects');
   const [activeProject, setActiveProject] = useState(0);
   const [copied, setCopied] = useState(false);
@@ -332,8 +504,8 @@ export default function App() {
               <h2 id="projects-title">Analytics that ends in a usable decision.</h2>
             </div>
             <p>
-              Esha's project work connects modelling, reporting, and business judgement: understand the data, expose the
-              trade-offs, document the risk, and make the next action easier.
+              Esha's finance analytics portfolio connects reporting, SQL analysis, variance review, valuation, and
+              portfolio performance into management-ready evidence.
             </p>
           </div>
 
@@ -367,6 +539,9 @@ export default function App() {
                   <span key={tag}>{tag}</span>
                 ))}
               </div>
+              <a className="text-link" href={`/projects/${selectedProject.slug}`}>
+                View full case study <ArrowRight size={16} aria-hidden="true" />
+              </a>
             </div>
             <AnalyticsPreview project={selectedProject} />
           </div>
