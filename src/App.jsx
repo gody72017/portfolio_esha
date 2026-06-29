@@ -417,7 +417,7 @@ function PortfolioHome() {
   useEffect(() => {
     const targets = [
       ...document.querySelectorAll(
-        '.reveal, .highlight-strip article, .work-tab, .skills-grid, .skills-grid article, .timeline article, .education-list article',
+        '.reveal, .highlight-strip article, .skills-grid, .skills-grid article, .timeline article, .education-list article',
       ),
     ];
 

@@ -1374,7 +1374,6 @@ footer a {
 
 .reveal,
 .highlight-strip article,
-.work-tab,
 .writing-grid article,
 .practice-grid article,
 .timeline article {
@@ -1387,7 +1386,6 @@ footer a {
 
 .reveal.is-visible,
 .highlight-strip article.is-visible,
-.work-tab.is-visible,
 .writing-grid article.is-visible,
 .practice-grid article.is-visible,
 .timeline article.is-visible {
@@ -1750,7 +1748,6 @@ footer a {
 
   .reveal,
   .highlight-strip article,
-  .work-tab,
   .writing-grid article,
   .practice-grid article,
   .timeline article {
